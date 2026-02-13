@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ჩემი გულის კარები ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<style>
+body {
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background: linear-gradient(135deg,#ffd6e8,#ffc0cb);
+  color:#b30059;
+  overflow:hidden;
+  text-align:center;
+}
+h1{font-family:'Great Vibes',cursive;font-size:48px;margin-top:60px;}
+p{font-size:18px;max-width:600px;margin:auto;}
+button{padding:12px 28px;font-size:18px;border:none;border-radius:25px;cursor:pointer;margin:10px;}
+.primary{background-color:#ff4d88;color:white;}
+.primary:hover{background-color:#ff1a66;}
+.secondary{background-color:#fff;color:#ff4d88;border:2px solid #ff4d88;}
+.heart{font-size:60px;animation:heartbeat 1s infinite;margin:20px 0;}
+@keyframes heartbeat{0%,50%,100%{transform:scale(1);}25%,75%{transform:scale(1.2);}}
+.big-text{font-size:28px;margin-top:20px;color:#b30059;animation:scaleUp 1s ease forwards;opacity:0;}
+@keyframes scaleUp{0%{transform:scale(0.8);opacity:0;}100%{transform:scale(1);opacity:1;}}
+.footer{margin-top:40px;font-style:italic;display:flex;align-items:center;justify-content:center;gap:10px;font-size:20px;}
+.footer .heart-icon{width:24px;height:24px;color:#ff4d88;animation:heartbeat 1.5s infinite;}
+#heartRain,#fireworks{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;overflow:visible;z-index:9999;}
+.heart-drop{position:absolute;width:20px;height:20px;background-color:#ff4d88;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;animation:fall 3s linear forwards;opacity:0.9;}
+@keyframes fall{0%{transform:translateY(-30px) rotate(0deg);opacity:0.9;}100%{transform:translateY(110vh) rotate(360deg);opacity:0;}}
+.firework{position:absolute;width:6px;height:6px;border-radius:50%;pointer-events:none;animation:explode 1s forwards;}
+@keyframes explode{0%{transform:scale(0);opacity:1;}50%{transform:scale(1.5);opacity:1;}100%{transform:scale(0);opacity:0;}}
+</style>
+</head>
+<body>
+
+<h1>ჩემი გულის კარები ❤️</h1>
+<div class="heart">❤️</div>
+<p>გილოცავ ჩემო ცხოვრება დღევანდელ დღეს. გული მწყდება, რომ ერთად ვერ ავღნიშნავთ.
+უზომოთ მენატრები მინდა გულში ჩაგიკრა და აღარ გაგიშვა.
+უზომოთ მიყვარხარ. მინდა სიცოცხლის ბოლომდე ჩემი გულის დედოფალი იყო.</p>
+
+<button class="primary" onclick="sayYes()">კი</button>
+<button class="secondary" onclick="hideNo()">არა</button>
+
+<div id="finalMessage" class="big-text">მე შენს გვერდით ყველაზე ბედნიერი ადამიანი ვარ მიყვარხარ ❤️
+<div class="footer">
+<svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42
+4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81
+14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4
+6.86-8.55 11.54L12 21.35z"/>
+</svg>
+შენი ცხვარუკასგან 🐑
+</div>
+</div>
+
+<div id="heartRain"></div>
+<div id="fireworks"></div>
+
+<script>
+function hideNo(){document.querySelector('.secondary').style.display='none';}
+function sayYes(){
+  const final = document.getElementById('finalMessage');
+  final.style.opacity=1;
+  startHeartRain();
+  startFullScreenFireworks();
+}
+
+function startHeartRain(){
+  const container = document.getElementById('heartRain');
+  for(let i=0;i<40;i++){
+    const heart = document.createElement('div');
+    heart.className='heart-drop';
+    heart.style.left = Math.random()*100+'vw';
+    heart.style.animationDuration = (2+Math.random()*2)+'s';
+    container.appendChild(heart);
+    heart.addEventListener('animationend',()=>container.removeChild(heart));
+  }
+}
+
+function startFullScreenFireworks(){
+  const container = document.getElementById('fireworks');
+  for(let i=0;i<50;i++){
+    const fire = document.createElement('div');
+    fire.className='firework';
+    fire.style.left = Math.random()*window.innerWidth+'px';
+    fire.style.top = Math.random()*window.innerHeight+'px';
+    fire.style.backgroundColor = `hsl(${Math.random()*360},100%,70%)`;
+    fire.style.animationDuration = (0.8+Math.random()*0.5)+'s';
+    container.appendChild(fire);
+    setTimeout(()=>fire.remove(),1200);
+  }
+}
+</script>
+</body>
+</html>
+
 
